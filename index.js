@@ -22,7 +22,7 @@ app.use("/api/v1",bookRoute)
 app.get("/",(req,res)=>{
     res.send("Book API Working")
 })
-app.listen(3000,()=>{
-    console.log("Server Started")
-    console.log("http://localhost:3000")
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+    console.log(`Server Started at http://localhost:${PORT}`)
 })
