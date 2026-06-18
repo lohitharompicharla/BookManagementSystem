@@ -33,10 +33,23 @@ const upload = multer({
     storage
 })
 
+const uploadBookCover = upload.fields([
+    { name: "image", maxCount: 1 },
+    { name: "coverImage", maxCount: 1 },
+    { name: "file", maxCount: 1 }
+])
+
 router.post(
     "/add/book",
     auth,
-    upload.single("image"),
+    uploadBookCover,
+    addBook
+)
+
+router.post(
+    "/books",
+    auth,
+    uploadBookCover,
     addBook
 )
 

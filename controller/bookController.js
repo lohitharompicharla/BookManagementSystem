@@ -1,5 +1,6 @@
 const Book = require("../models/Book")
 const cloudinary = require("cloudinary").v2
+require("dotenv").config({ override: true })
 
 cloudinary.config({
     cloud_name:process.env.CLOUD_NAME,
@@ -11,9 +12,21 @@ exports.addBook = async(req,res)=>{
 
 try{
 
+const file =
+    req.file ||
+    req.files?.image?.[0] ||
+    req.files?.coverImage?.[0] ||
+    req.files?.file?.[0]
+
+if (!file) {
+    return res.status(400).json({
+        error: "Book cover image is required. Send it as form-data with field name image, coverImage, or file."
+    })
+}
+
 const result =
 await cloudinary.uploader.upload(
-    req.file.path,
+    file.path,
     {
         folder:"books"
     }

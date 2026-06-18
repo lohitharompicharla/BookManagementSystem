@@ -1,0 +1,6 @@
+◇ injected env (5) from .env // tip: ⌘ suppress logs { quiet: true }
+◇ injected env (5) from .env // tip: ⌘ enable debugging { debug: true }
+◇ injected env (5) from .env // tip: ⌁ auth for agents [www.vestauth.com]
+Server Started
+http://localhost:3000
+DB Connected

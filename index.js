@@ -1,7 +1,7 @@
 const express = require("express")
 const app = express()
 
-require("dotenv").config()
+require("dotenv").config({ override: true })
 
 const connectDB =
 require("./config/db")
